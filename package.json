@@ -1,0 +1,22 @@
+{
+  "name": "guessthesong",
+  "version": "1.0.0",
+  "description": "Socket-based multiplayer song guessing game using Spotify's APIs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Tommaso Maestri",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.1",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.1"
+  }
+}
