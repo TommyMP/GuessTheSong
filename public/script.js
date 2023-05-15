@@ -1,23 +1,22 @@
-const bcrypt = require('bcrypt');
 
 // Gestione del form di login
-const loginForm = document.getElementById('login-form');
+const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
   // Recupero dei valori dal form
-  const email = document.getElementById('login-email').value;
-  const password = document.getElementById('login-password').value;
+  const password = document.getElementById('password').value;
+  const username = document.getElementById('username').value;
 
   // Hashing della password con bcrypt
-  const salt = bcrypt.genSaltSync(10);
-  const hashedPassword = bcrypt.hashSync(password, salt);
+  //const salt = bcrypt.genSaltSync(10);
+  //const hashedPassword = bcrypt.hashSync(password, salt);
 
   // Invio dei dati al server tramite fetch
-  fetch('localhost:3000/auth/login', {
+  fetch('http://localhost:3000/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password: hashedPassword }),
+    body: JSON.stringify({ username, password }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -25,52 +24,58 @@ loginForm.addEventListener('submit', (event) => {
       localStorage.setItem('token', data.token);
 
       // Connessione a Socket.IO con il token
-      const socket = io({
-        auth: { token: data.token },
-      });
+      // const socket = io({
+      //   auth: { token: data.token },
+      // });
 
-      // Esempio di utilizzo del socket
-      socket.on('connect', () => {
-        console.log('Connesso al server Socket.IO');
-      });
+      // // Esempio di utilizzo del socket
+      // socket.on('connect', () => {
+      //   console.log('Connesso al server Socket.IO');
+      // });
     })
     .catch((error) => console.error(error));
 });
 
+
 // Gestione del form di registrazione
-const registrationForm = document.getElementById('registration-form');
+const registrationForm = document.getElementById('registrationForm');
 registrationForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
   // Recupero dei valori dal form
-  const name = document.getElementById('registration-name').value;
-  const email = document.getElementById('registration-email').value;
-  const password = document.getElementById('registration-password').value;
+  const username = document.getElementById('usernameR').value;
+  const email = document.getElementById('emailR').value;
+  const password = document.getElementById('passwordR').value;
 
   // Hashing della password con bcrypt
-  const salt = bcrypt.genSaltSync(10);
-  const hashedPassword = bcrypt.hashSync(password, salt);
+  //const salt = bcrypt.genSaltSync(10);
+  //const hashedPassword = bcrypt.hashSync(password, salt);
 
   // Invio dei dati al server tramite fetch
-  fetch('localhost:3000/auth/register', {
+  fetch('http://localhost:3000/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, password: hashedPassword }),
+    body: JSON.stringify({ username, email, password }),
   })
     .then((response) => response.json())
     .then((data) => {
       // Salvataggio del token nel Local Storage
       localStorage.setItem('token', data.token);
 
-      // Connessione a Socket.IO con il token
-      const socket = io({
-        auth: { token: data.token },
-      });
-
-      // Esempio di utilizzo del socket
-      socket.on('connect', () => {
-        console.log('Connesso al server Socket.IO');
-      });
+      
     })
     .catch((error) => console.error(error));
 });
+
+// Connessione a Socket.IO con il token
+setInterval(() => { console.log(localStorage.getItem('token'))},5000);
+
+
+// const socket = io({
+//   auth: { token: localStorage.getItem('token') },
+// });
+
+// // Esempio di utilizzo del socket
+// socket.on('connect', () => {
+//   console.log('Connesso al server Socket.IO');
+// });

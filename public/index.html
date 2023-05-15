@@ -7,6 +7,9 @@
     <title>Login/Registrazione</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+
+
+    <!-- <script>const bcrypt = require('bcrypt');</script> -->
 </head>
 <body>
     <div class="container">
@@ -15,8 +18,8 @@
                 <h2 class="mb-3">Login</h2>
                 <form id="loginForm" method="POST">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -31,16 +34,16 @@
                 <h2 class="mb-3">Registrazione</h2>
                 <form id="registrationForm" method="POST">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="usernameR" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="emailR" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="passwordR" name="password" required>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Registrazione</button>
@@ -50,6 +53,8 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

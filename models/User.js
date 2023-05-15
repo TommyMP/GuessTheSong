@@ -17,11 +17,11 @@ const userSchema = new mongoose.Schema({
   },
   officialGamesPlayed: {
     type: Number,
-    required: true,
+    default: 0
   },
   officialGamesWon: {
     type: Number,
-    required: true,
+    default: 0
   },
   createdAt: {
     type: Date,
