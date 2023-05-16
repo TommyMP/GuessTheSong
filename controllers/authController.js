@@ -27,7 +27,11 @@ authController.register = async (req, res) => {
     // Salva l'utente nel database
     await newUser.save();
 
-    return res.status(201).json({ message: 'Utente registrato con successo' });
+    // Crea il token JWT
+    const token = jwt.sign({ username: newUser.username }, process.env.JWT_SECRET);
+
+    return res.status(200).json({ token });
+
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Errore durante la registrazione' });
@@ -51,7 +55,7 @@ authController.login = async (req, res) => {
     }
 
     // Crea il token JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET);
 
     return res.status(200).json({ token });
   } catch (error) {

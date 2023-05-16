@@ -23,6 +23,8 @@ loginForm.addEventListener('submit', (event) => {
       // Salvataggio del token nel Local Storage
       localStorage.setItem('token', data.token);
 
+      window.location.href = `/lobby?token=${data.token}`
+
       // Connessione a Socket.IO con il token
       // const socket = io({
       //   auth: { token: data.token },
@@ -61,6 +63,7 @@ registrationForm.addEventListener('submit', (event) => {
     .then((data) => {
       // Salvataggio del token nel Local Storage
       localStorage.setItem('token', data.token);
+      window.location.href = `/lobby?token=${data.token}`
 
       
     })
