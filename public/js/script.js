@@ -10,6 +10,8 @@ const secs = document.getElementById('seconds');
 const eimage = document.getElementById('songimage');
 const etitle = document.getElementById('songtitle');
 const eartists = document.getElementById('songartists');
+const msgBox = document.getElementById('msg');
+const msgSubmit = document.getElementById('submitMsg');
 
 const volume = document.getElementById('volume');
 const volumeIcon = document.getElementById('volumeIcon');
@@ -240,8 +242,9 @@ function outputNumber(num) {
 }
 
 function playSound(url) {
+    msgSubmit.disabled = false;
     ResetInfo();
-    console.log(url);
+    //console.log(url);
     a = new Audio(url);
     a.volume = volume.value/100;
     a.play();
@@ -252,6 +255,7 @@ function playSound(url) {
 }
 
 function stopSound(title,artists,image) {
+    msgSubmit.disabled = true;
     a.pause();
     a.currentTime = 0;   
     clearInterval(tickFunc);

@@ -347,3 +347,14 @@ function filtraTitolo(titolo) {
   titolo = titolo.replace(/\([^\)].+?\)/g, '').replace(/\[[^\]].+?\]/g, '').replace(/-.*((with)|(feat)).*/gi,'').replace(/-.*((remix)|(rmx)).*/gi,'').replace(/-.*((radio)|(edit)).*/gi,'').replace(/-.*(remaster).*/gi, '').replace(/[ \t]+$/g, '');
   return titolo;
 }
+
+
+
+
+//TODO: impostazioni visualizzazione immagine
+//TODO: visualizzazione risposta inviata precedentemente
+//TODO: annuncio vincitore
+//TODO: selezione playlist ufficiale
+//TODO: controllo che ci siano 2 o più giocatori per la playlist ufficiale
+//TODO: tasto skip
+//TODO: classifica

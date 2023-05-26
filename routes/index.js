@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware');
 const path = require('path');
+const rankingsController = require('../controllers/rankingsController');
+
 
 
 // Importo le route definite in altri file
@@ -21,5 +23,7 @@ router.get('/game', authMiddleware, (req, res) => {
   // Se l'utente arriva qui, significa che il token è valido e può accedere alla lobby
   res.sendFile(path.join(__dirname, '../public/game.html'));
 });
+
+router.get('/rankings', rankingsController.getRankings);
 
 module.exports = router;
