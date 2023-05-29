@@ -25,13 +25,37 @@ const _playableTracksN = document.getElementById('playableTracksN');
 const _totalTracksN = document.getElementById('totalTracksN');
 const _roundsNumber = document.getElementById('roundsNumber');
 const _startGame = document.getElementById('startGame');
+const _startRanked = document.getElementById('startRanked');
 const _iconS = document.getElementById('iconS');
 const _settings = document.getElementById('settings');
 const _settingsDiv = document.getElementById('settingsDiv');
+const _loadRanked = document.getElementById('loadRanked');
 
+var listaUtenti;
+var ranked = false;
 
 _validatePlaylist.addEventListener("click", () => {
     socket.emit('chatCommand', {comando:'playlist', args:[_playlistLink.value]});
+    ranked = false;
+    if(listaUtenti.length>1 && ranked)
+    {
+        _startRanked.disabled = false;
+    }
+    else {
+        _startRanked.disabled = true;
+    }
+});
+
+_loadRanked.addEventListener("click", () => {
+    socket.emit('chatCommand', {comando:'playlist', args:['ranked']});
+    ranked = true;
+    if(listaUtenti.length>1 && ranked)
+    {
+        _startRanked.disabled = false;
+    }
+    else {
+        _startRanked.disabled = true;
+    }
 });
 
 
@@ -39,7 +63,14 @@ _startGame.addEventListener("click", () => {
     socket.emit('chatCommand', {comando:'turns', args:[_roundsNumber.value]});
     socket.emit('chatCommand', {comando:'startGame', args:[]});
     _settingsDiv.hidden = true;
-})
+});
+
+_startRanked.addEventListener("click", () => {
+    socket.emit('chatCommand', {comando:'playlist', args:['ranked']});
+    
+    socket.emit('chatCommand', {comando:'turns', args:[_roundsNumber.value]});
+    socket.emit('chatCommand', {comando:'startGame', args:[]});
+});
 
 volume.addEventListener("change", () => {
     if(volume.value == 0) {
@@ -170,6 +201,15 @@ function outputRoomName(room) {
 
 // Caricamento lista utenti nel DOM
 function outputUsers(users) {
+    listaUtenti = users;
+    ranked = true;
+    if(listaUtenti.length>1 && ranked)
+    {
+        _startRanked.disabled = false;
+    }
+    else {
+        _startRanked.disabled = true;
+    }
     console.log(users);
     userList.innerHTML = `
     <tbody>

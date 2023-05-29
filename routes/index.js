@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware');
 const path = require('path');
-const rankingsController = require('../controllers/rankingsController');
+const User = require('../models/User');
 
 
 
@@ -24,6 +24,19 @@ router.get('/game', authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/game.html'));
 });
 
-router.get('/rankings', rankingsController.getRankings);
+router.get('/rankings', async (req, res) => {
+  try {
+    const users = await User.find({}, 'username officialGamesPlayed officialGamesWon')
+      .sort({ officialGamesWon: -1, officialGamesPlayed: 1 })
+      .limit(100);
+
+    res.json(users);
+  } catch (error) {
+    console.error('Errore nella richiesta:', error);
+    res.status(500).json({ error: 'Errore nella richiesta' });
+  }
+});
+
+
 
 module.exports = router;

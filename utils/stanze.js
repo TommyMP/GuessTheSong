@@ -31,7 +31,7 @@ function creaStanza(nome) {
     let tracceRiproducibili = [];
     let imgPlaylist;
     let imgTraccia;
-    let official = true;
+    let official;
     //let hasBeenSkipped = false;
     let room = { nome, totaleTurni, turno, idPlaylist, nomePlaylist, titoloTracciaCorrente, 
         listaArtistiCorrenti, titoloIndovinato, artistiDaIndovinare, riproduzioneInCorso,

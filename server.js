@@ -68,9 +68,9 @@ io.use((socket, next) => {
       return next(new Error('Authentication error'));
     }
 
-    console.log("handshake token " + token);
-    console.log("decoded token " + decoded);
-    console.log("decoded username " + decoded.username);
+    // console.log("handshake token " + token);
+    // console.log("decoded token " + decoded);
+    // console.log("decoded username " + decoded.username);
 
     User.findOne({ username: decoded.username })
       .then((user) => {
@@ -187,6 +187,13 @@ async function eseguiComando(stanza, comando, args) {
   console.log(args);
   switch (comando) {
       case 'playlist':
+          if(args[0] == 'ranked') {
+            getStanza(stanza).official = true;
+            args[0] = 'https://open.spotify.com/playlist/0VmTGQy2F6D3vejCvg00dJ?si=449104d0fd65451e'; 
+          } else {
+            official = false;
+          }
+          console.log(args[0]);
           getStanza(stanza).idPlaylist = args[0].replace('https://open.spotify.com/playlist/', '').split('?')[0]; 
           
           spotifyApi.getPlaylist(getStanza(stanza).idPlaylist).then(async function (data) {

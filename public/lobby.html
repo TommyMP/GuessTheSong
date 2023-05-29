@@ -41,41 +41,52 @@
       <div class="info col-12 col-lg-7">
         <h2 id="howtoplay" class="logintitle mb-4">How to play <i id="howtoplayICON" class="fas fa-chevron-up"></i></h2>
         <h3 data-group="1" class="pagesubtitle">I. Joining a Room</h3>
-        <p data-group="1">Choose an username and type the name of the room you want to join. If you want to create a room, you can type anything you like.</p>
+        <p data-group="1">Choose an username and type the name of the room you want to join. If you want to create a
+          room, you can type anything you like.</p>
         <h3 data-group="1" class="pagesubtitle">II. Setting up the game</h3>
-        <p data-group="1">The first user to join a room gets admin privileges and can access the settings by clicking the small gear icon in the top-right corner.
-          In the settings page the admin can paste a Spotify Playlist's link (the playlist have to be public) and load the playlist.
-          The page will then display the number of tracks that can be played from that playlist (the game uses Spotify's previews, which are not
+        <p data-group="1">The first user to join a room gets admin privileges and can access the settings by clicking
+          the small gear icon in the top-right corner.
+          In the settings page the admin can paste a Spotify Playlist's link (the playlist have to be public) and load
+          the playlist.
+          The page will then display the number of tracks that can be played from that playlist (the game uses Spotify's
+          previews, which are not
           available for every song), and the admin can decide how many of them will be played.
         </p>
         <h3 data-group="1" class="pagesubtitle">III. Playing</h3>
-        <p data-group="1">Once the game starts, the players have 30 seconds to guess the title of the songs and all the artists involved.
-          The title have to be written separatedly from the artists, while the artists can be written together in a single guess.
-          Players get a point for every correct guess. If the title and all the artists are guessed before the end of the 30 seconds, the song
+        <p data-group="1">Once the game starts, the players have 30 seconds to guess the title of the songs and all the
+          artists involved.
+          The title have to be written separatedly from the artists, while the artists can be written together in a
+          single guess.
+          Players get a point for every correct guess. If the title and all the artists are guessed before the end of
+          the 30 seconds, the song
           automatically stops.
         </p>
       </div>
-      
+
     </div>
     <div class="d-flex justify-content-center mb-5">
       <div class="info col-12 col-lg-7 mb-5">
         <h2 id="rankings" class="logintitle mb-4">Rankings <i id="rankingsICON" class="fas fa-chevron-up"></i></h2>
-        <h3 data-group="2" class="pagesubtitle">I. Joining a Room</h3>
-        <p data-group="2">Choose an username and type the name of the room you want to join. If you want to create a room, you can type anything you like.</p>
-        <h3 data-group="2" class="pagesubtitle">II. Setting up the game</h3>
-        <p data-group="2">The first user to join a room gets admin privileges and can access the settings by clicking the small gear icon in the top-right corner.
-          In the settings page the admin can paste a Spotify Playlist's link (the playlist have to be public) and load the playlist.
-          The page will then display the number of tracks that can be played from that playlist (the game uses Spotify's previews, which are not
-          available for every song), and the admin can decide how many of them will be played.
-        </p>
-        <h3 data-group="2" class="pagesubtitle">III. Playing</h3>
-        <p data-group="2">Once the game starts, the players have 30 seconds to guess the title of the songs and all the artists involved.
-          The title have to be written separatedly from the artists, while the artists can be written together in a single guess.
-          Players get a point for every correct guess. If the title and all the artists are guessed before the end of the 30 seconds, the song
-          automatically stops.
-        </p>
+        <div data-group="2" id="idTable" class="classifica">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-1" scope="row">#</th>
+                <th class="col-9">Username</td>
+                <th>Win Ratio</td>
+              </tr>
+            </thead>
+            <tbody id="users">
+              <tr>
+                <th class="col-1" scope="row">1</th>
+                <td class="col-9">User</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      
+
     </div>
   </div>
 
