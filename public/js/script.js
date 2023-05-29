@@ -202,7 +202,6 @@ function outputRoomName(room) {
 // Caricamento lista utenti nel DOM
 function outputUsers(users) {
     listaUtenti = users;
-    ranked = true;
     if(listaUtenti.length>1 && ranked)
     {
         _startRanked.disabled = false;

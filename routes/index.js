@@ -25,16 +25,36 @@ router.get('/game', authMiddleware, (req, res) => {
 });
 
 router.get('/rankings', async (req, res) => {
-  try {
-    const users = await User.find({}, 'username officialGamesPlayed officialGamesWon')
-      .sort({ officialGamesWon: -1, officialGamesPlayed: 1 })
-      .limit(100);
+  // try {
+  //   const users = await User.find({}, 'username officialGamesPlayed officialGamesWon')
+  //     .sort({ officialGamesWon: -1, officialGamesPlayed: 1 })
+  //     .limit(100);
 
+  //   res.json(users);
+  // } catch (error) {
+  //   console.error('Errore nella richiesta:', error);
+  //   res.status(500).json({ error: 'Errore nella richiesta' });
+  // }
+  try {
+    const users = await User.aggregate([
+      {
+        $project: {
+          username: 1,
+          rapporto: { $divide: ['$officialGamesWon', '$officialGamesPlayed'] }
+        }
+      },
+      { $sort: { rapporto: -1 } },
+      { $limit: 100 }
+    ]);
+
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Expires', '0');
     res.json(users);
   } catch (error) {
     console.error('Errore nella richiesta:', error);
     res.status(500).json({ error: 'Errore nella richiesta' });
   }
+
 });
 
 

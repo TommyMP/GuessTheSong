@@ -9,9 +9,10 @@ const group2 = document.querySelectorAll('[data-group="2"');
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3000/rankings')
+    fetch('http://localhost:3000/rankings'+"?ms="+Date.now())
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             outputRankings(data);
         })
         .catch(error => {
@@ -58,12 +59,14 @@ joinForm.addEventListener('submit', (e) => {
 const userList = document.getElementById("users");
 
 function outputRankings(users) {
+    console.log(users[0]);
+    console.log(users[0].rapporto);
     userList.innerHTML = `
         ${users.map((user, index) => `
             <tr>
                 <th class="col-1" scope="row">${index + 1}</th>
                 <td class="col-9">${user.username}</td>
-                <td>${user.officialGamesPlayed == 0 ? 0 : (user.officialGamesWon/user.officialGamesPlayed).toFixed(4)}</td>
+                <td>${user.rapporto == 0 ? 0 : user.rapporto.toFixed(4)}</td>
             </tr>`
     ).join('')}`;
 }
