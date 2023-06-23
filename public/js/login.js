@@ -13,7 +13,7 @@ loginForm.addEventListener('submit', (event) => {
   //const hashedPassword = bcrypt.hashSync(password, salt);
 
   // Invio dei dati al server tramite fetch
-  fetch('http://localhost:3000/auth/login', {
+  fetch('/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
@@ -54,7 +54,7 @@ registrationForm.addEventListener('submit', (event) => {
   //const hashedPassword = bcrypt.hashSync(password, salt);
 
   // Invio dei dati al server tramite fetch
-  fetch('http://localhost:3000/auth/register', {
+  fetch('/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password }),

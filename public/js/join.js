@@ -9,7 +9,7 @@ const group2 = document.querySelectorAll('[data-group="2"');
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3000/rankings'+"?ms="+Date.now())
+    fetch('/rankings'+"?ms="+Date.now())
         .then(response => response.json())
         .then(data => {
             console.log(data);
