@@ -40,7 +40,11 @@ router.get('/rankings', async (req, res) => {
       {
         $project: {
           username: 1,
-          rapporto: { $divide: ['$officialGamesWon', '$officialGamesPlayed'] }
+          rapporto: { $cond: {
+            if: { $eq: ['$officialGamesPlayed', 0] },
+            then: 0,
+            else: { $divide: ['$officialGamesWon', '$officialGamesPlayed'] }
+          } }
         }
       },
       { $sort: { rapporto: -1 } },

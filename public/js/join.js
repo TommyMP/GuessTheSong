@@ -8,7 +8,12 @@ const group1 = document.querySelectorAll('[data-group="1"');
 const group2 = document.querySelectorAll('[data-group="2"');
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
+    setInterval(GetRanks, 1000);
+});
+
+function GetRanks() {
     fetch('/rankings'+"?ms="+Date.now())
         .then(response => response.json())
         .then(data => {
@@ -18,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Errore nella richiesta:', error);
         });
-});
+}
 
 howtoplay.addEventListener('click', (e) => {
     if (howtoplayICON.classList.contains('fa-chevron-up')) {
