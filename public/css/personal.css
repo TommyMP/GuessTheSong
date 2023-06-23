@@ -225,6 +225,11 @@ input[type=range]:focus {
     color: rgb(190, 190, 190);
 }
 
+#loginpage.dark-theme .elc {
+    color: rgb(240, 240, 240) !important;
+
+}
+
 /*----------------------------------------------*/
 
 /* .info {

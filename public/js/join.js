@@ -69,9 +69,9 @@ function outputRankings(users) {
     userList.innerHTML = `
         ${users.map((user, index) => `
             <tr>
-                <th class="col-1" scope="row">${index + 1}</th>
-                <td class="col-9">${user.username}</td>
-                <td>${user.rapporto == 0 ? 0 : user.rapporto.toFixed(4)}</td>
+                <th class="col-1 elc" scope="row">${index + 1}</th>
+                <td class="col-9 elc">${user.username}</td>
+                <td class="elc">${user.rapporto == 0 ? 0 : user.rapporto.toFixed(4)}</td>
             </tr>`
     ).join('')}`;
 }
